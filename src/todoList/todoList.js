@@ -3,6 +3,8 @@ import React, {useState} from "react";
 import {MyMenuBar} from "../menuBar/menuBar";
 import {TodoListMain} from "./todoListMain";
 
+export const MenuBarContext = React.createContext();
+
 const TodoList = () => {
     const [atMainPage,setAtMainPage] = useState(true);
     const [atProcessingPage,setAtProcessingPage] = useState(false);
@@ -18,10 +20,19 @@ const TodoList = () => {
         setAtDonePage(action);
     }
 
+    const getContextValue = () => {
+        return ({
+            atMainPage: atMainPage,
+            atProcessingPage: atProcessingPage,
+            atDonePage: atDonePage
+        });
+    }
 
     return (
         <>
-            <TodoListMain />
+            <MenuBarContext.Provider value={getContextValue()}>
+                <TodoListMain />
+            </MenuBarContext.Provider>
             <MyMenuBar switchToMainPage={switchToMainPage} switchToProcessingPage={switchToProcessingPage} switchToDonePage={switchToDonePage}/>
         </>
     );

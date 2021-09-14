@@ -2,10 +2,13 @@ import {useContext, useState} from "react";
 import {TextContext} from "../App";
 
 const TodoListMainItemEditing = ({item}) => {
-    const {changeItemText} = useContext(TextContext);
+    const {changeItemText,changeItemComplete} = useContext(TextContext);
 
     const [clickEditing,setClickEditing] = useState(false);
     const [textEditing,setTextEditing] = useState(`${item.text.split("_")[0]}`);
+
+    const[lineThrough,setLineThrough] = useState(item.checkCompleted? "line-throughEfficient" : "");
+    const [buttonDisable,setButtonDisable] = useState(item.checkCompleted);
 
     const handleEditingClick = () => {
         setClickEditing(!clickEditing);
@@ -20,6 +23,12 @@ const TodoListMainItemEditing = ({item}) => {
     const handleTextEditingChange = (event) => {
         setTextEditing(event.target.value);
     }
+    const handleTextClick = () => {
+        console.log("Clicked span");
+        changeItemComplete(item);
+        setLineThrough("line-throughEfficient");
+        setButtonDisable(true);
+    }
     return(
         <>
             {clickEditing?
@@ -31,8 +40,8 @@ const TodoListMainItemEditing = ({item}) => {
                 </>
                 :
                 <>
-                    <span>{item.text.split("_")[0]}</span>
-                    <button onClick={handleEditingClick}>edit</button>
+                    <span className={lineThrough} onClick={handleTextClick}>{item.text.split("_")[0]}</span>
+                    <button disabled={buttonDisable} onClick={handleEditingClick}>edit</button>
                 </>
             }
         </>

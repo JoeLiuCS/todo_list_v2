@@ -20,4 +20,10 @@ const objChangeText = (target,text) => {
     return tempObj;
 }
 
-export {objCompare,objChangeIndex,objChangeText}
+const objChangeComplete = (target) => {
+    let tempObj = JSON.parse(JSON.stringify(target));
+    tempObj.checkCompleted = true;
+    return tempObj;
+}
+
+export {objCompare,objChangeIndex,objChangeText,objChangeComplete}

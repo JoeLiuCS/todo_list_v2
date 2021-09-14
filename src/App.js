@@ -5,7 +5,7 @@ import {NonTodoList} from "./nonTodoList/nonTodoList";
 import {TodoList} from "./todoList/todoList";
 //---------------------------Function import------------------------------------
 import {checkMapContains, getMapValue, setMapValuePlusOne} from "./toolsBank/myMapOperations";
-import {objCompare,objChangeIndex,objChangeText} from "./toolsBank/objectOperation";
+import {objCompare,objChangeIndex,objChangeText,objChangeComplete} from "./toolsBank/objectOperation";
 
 export const TextContext = React.createContext();
 
@@ -97,12 +97,24 @@ function App() {
         setMyListObj(tempListObj);
     }
 
+    const changeItemComplete = (item) => {
+        let tempListObj = JSON.parse(JSON.stringify(myListObj));
+        for(let i=0; i<tempListObj.length; i++){
+            if(objCompare(tempListObj[i],item)){
+                let newObj = objChangeComplete(tempListObj[i]);
+                tempListObj[i] = newObj;
+            }
+        }
+        setMyListObj(tempListObj);
+    }
+
     const getContextValue = () => {
         return ({
             myListObj: myListObj,
             deleteListItem: deleteListItem,
             changeItemIndex: changeItemIndex,
-            changeItemText: changeItemText
+            changeItemText: changeItemText,
+            changeItemComplete: changeItemComplete
         });
     }
     return (
