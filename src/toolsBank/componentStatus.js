@@ -1,4 +1,3 @@
-
 const componentStatus = {
     PROCESSING: "PROCESSING",
     DONE: "DONE"

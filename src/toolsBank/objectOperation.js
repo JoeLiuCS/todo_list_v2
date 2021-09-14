@@ -1,5 +1,4 @@
-
-
+// Compare two object have same properties
 const objCompare = (a,b) => {
     if(a.text == b.text && a.index == b.index && a.checkCompleted == b.checkCompleted){
         return true;
@@ -19,7 +18,6 @@ const objChangeText = (target,text) => {
     tempObj.checkCompleted = true;
     return tempObj;
 }
-
 const objChangeComplete = (target) => {
     let tempObj = JSON.parse(JSON.stringify(target));
     tempObj.checkCompleted = true;

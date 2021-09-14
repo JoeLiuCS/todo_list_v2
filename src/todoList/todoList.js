@@ -13,9 +13,11 @@ const TodoList = () => {
     const switchToMainPage = (action) => {
         setAtMainPage(action);
     }
+
     const switchToProcessingPage = (action) => {
         setAtProcessingPage(action);
     }
+
     const switchToDonePage = (action) => {
         setAtDonePage(action);
     }
@@ -29,10 +31,11 @@ const TodoList = () => {
     }
 
     return (
-        <>
+        <>  {/* TodoList Bar */}
             <MenuBarContext.Provider value={getContextValue()}>
                 <TodoListMain />
             </MenuBarContext.Provider>
+            {/* Menu Bar */}
             <MyMenuBar switchToMainPage={switchToMainPage} switchToProcessingPage={switchToProcessingPage} switchToDonePage={switchToDonePage}/>
         </>
     );

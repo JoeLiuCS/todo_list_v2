@@ -15,6 +15,7 @@ const TodoListMainItem = ({item}) => {
         setIndexBarNumber(parseInt(event.target.value));
         changeItemIndex(item,parseInt(event.target.value));
     }
+
     const handleOnDelete = () => {
         deleteListItem(item);
     }
@@ -51,9 +52,9 @@ const TodoListMainItem = ({item}) => {
             <li id={`${item.text}_id`} className={`${pageSwitch()}`}>
                 {/* Index bar */}
                 <input type={"number"} value={indexBarNumber} onChange={handleNumberChange}/>
-
+                {/* Text Editing Component */}
                 <TodoListMainItemEditing item={item}/>
-
+                {/* Delete button */}
                 <button onClick={handleOnDelete}>delete</button>
             </li>
         </div>
