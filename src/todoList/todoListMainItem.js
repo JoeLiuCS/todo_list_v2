@@ -1,12 +1,19 @@
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {TodoListMainItemEditing} from "./todoListMainItemEditing";
+import {TextContext} from "../App";
 
 const TodoListMainItem = ({item}) => {
-    const [indexBarNumber,setIndexBarNumber] = useState(1);
+    const {deleteListItem,changeItemIndex} = useContext(TextContext);
+
+    const [indexBarNumber,setIndexBarNumber] = useState(item.index);
 
     // Index bar
     const handleNumberChange = (event) => {
         setIndexBarNumber(parseInt(event.target.value));
+        changeItemIndex(item,parseInt(event.target.value));
+    }
+    const handleOnDelete = () => {
+        deleteListItem(item);
     }
     return (
         <div className={""}>
@@ -16,8 +23,7 @@ const TodoListMainItem = ({item}) => {
 
                 <TodoListMainItemEditing item={item}/>
 
-
-                <button>delete</button>
+                <button onClick={handleOnDelete}>delete</button>
             </li>
         </div>
     );

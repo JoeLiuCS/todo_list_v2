@@ -16,7 +16,7 @@ const TodoListMain = () => {
 
             <ul className={"propsPassInListWithUsingMap"}>
                 {myListObj.sort((a,b) => a.index - b.index).map((item)=>{
-                    return (<div className={""} key={item}>
+                    return (<div className={""} key={item.text}>
                                 <TodoListMainItem item={item}/>
                             </div>);
                 })}

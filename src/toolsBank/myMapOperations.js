@@ -23,16 +23,16 @@ function getMapValue(key){
     return result;
 }
 
-function setMapValue(key,value){
+function setMapValuePlusOne(key){
     // This is my map
     let target = this;
     let result = JSON.parse(JSON.stringify(target));
     for(let i=0; i<result.length; i++){
         if(result[i].key == key){
-            result[i].value += parseInt(value);
+            result[i].value += 1;
         }
     }
     return result;
 }
 
-export {checkMapContains,getMapValue,setMapValue}
+export {checkMapContains,getMapValue,setMapValuePlusOne}
