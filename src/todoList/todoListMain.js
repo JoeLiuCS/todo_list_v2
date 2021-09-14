@@ -1,11 +1,9 @@
 import {useContext, useState} from "react";
 import {TextContext} from "../App";
-// import {MenuBarContext} from "./todoList";
 import {TodoListMainItem} from "./todoListMainItem";
 
 const TodoListMain = () => {
     const {myListObj} = useContext(TextContext);
-    // const {atMainPage,atProcessingPage,atDonePage} = useContext(MenuBarContext);
 
     const [searchInput,setSearchInput] = useState("");
 
